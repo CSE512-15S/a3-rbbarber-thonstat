@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Distribution of National Science Foundation Awards</title>
-		<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+		<script type="text/javascript" src="../d3/d3.js"></script>
 		<style type="text/css">
 			body{
 				width: 900px;
@@ -53,13 +53,13 @@
 			#top_title{
 				font-size: 24px;
 				font-weight: bold;
-				width: 820px;
+				width: 740px;
 				text-align: center;
 			}
 			#small_title{
 				font-size: 16px;
 				font-weight: bold;
-				width: 820px;
+				width: 850px;
 				text-align: center;
 			}
 			#filter_options {
@@ -71,10 +71,17 @@
 			}
 			#timeline {
 				position: absolute;
-				top: 460px;
-				left: 10px;
+				top: 470px;
+				left: 20px;
 				background: #c7c7c7;
 				padding: 10px;
+			}
+			#legend{
+				width: 850px;
+				position: absolute;
+				top: 450px;
+				left: 30px;
+				font-size: 10pt;
 			}
 			/* New divs for svg graphics */
 			/* ----------------------------------------------------------- */
@@ -85,8 +92,8 @@
 			}
 			#barchart{
 				position: absolute;
-				top: 380px;
-				left: 600px;
+				top: 360px;
+				left: 610px;
 			}
 			/* ----------------------------------------------------------- */
 		</style>
@@ -94,6 +101,7 @@
 	<body>
 		<div id="top_title">Distribution of National Science Foundation Awards</div>
 		<div id="small_title">Percentage of Yearly Award Total</div>
+		<div id="legend">Hover over map entries for more detail</div>
 		<!-- NEW DIVS--> 
 		<div id="map"> </div>
 		<div id="barchart"> </div>
@@ -159,7 +167,7 @@
     			formatYr = function(d) { return formatTime(new Date(1974+5*d, 0, 1)); };
 			// --------------------------
 
-			var projection = d3.geo.albersUsa().translate([w/2, h/2-50]).scale([800]);
+			var projection = d3.geo.albersUsa().translate([w/2 + 10, h/2-30]).scale([800]);
 			var path = d3.geo.path().projection(projection);
 			var svg = d3.select("#map").append("svg").attr("width", w).attr("height", h);
 
